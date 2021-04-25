@@ -13,18 +13,18 @@ import { useLocation } from 'react-router-dom';
 const Home = () => {
 	const location = useLocation();
 	const pathId = location.pathname.split('/')[2];
+
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(loadGames());
 	}, [dispatch]);
 	const { popular, newGames, upcoming } = useSelector(state => state.games);
-
 	return (
 		<GameList>
 			<AnimateSharedLayout type='crossfade'>
-				<AnimatePresence>
-					{pathId && <GameDetail pathId={pathId} />}
-				</AnimatePresence>
+				{/* <AnimatePresence> */}
+				{pathId && <GameDetail key={pathId} pathId={pathId} />}
+				{/* </AnimatePresence> */}
 				<h2>Upcoming Games</h2>
 				<Games>
 					{upcoming.map(game => (
