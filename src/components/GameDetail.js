@@ -77,6 +77,7 @@ const GameDetail = ({ pathId }) => {
 							<div className='rating'>
 								<motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
 								<p>Rating: {game.rating}</p>
+								<p>metacritic: {game.metacritic}</p>
 								{getStars()}
 							</div>
 							<Info>
@@ -102,7 +103,7 @@ const GameDetail = ({ pathId }) => {
 						<Description>
 							<p>{game.description_raw}</p>
 						</Description>
-						<motion.div className='galary'>
+						<Galary>
 							{screen.results.map(screen => (
 								<img
 									src={smallImage(screen.image, 1280)}
@@ -110,7 +111,7 @@ const GameDetail = ({ pathId }) => {
 									alt={screen.image}
 								/>
 							))}
-						</motion.div>
+						</Galary>
 					</Detail>
 				</CardShadow>
 			)}
@@ -149,6 +150,12 @@ const Detail = styled(motion.div)`
 	img {
 		width: 100%;
 	}
+	@media screen and (max-width: 665px) {
+		padding: 1.5rem 2.5rem;
+	}
+	@media screen and (max-width: 425px) {
+		padding: 1rem;
+	}
 `;
 
 const Stats = styled(motion.div)`
@@ -160,6 +167,9 @@ const Stats = styled(motion.div)`
 		height: 2rem;
 		display: inline-flex;
 	}
+	@media screen and (max-width: 425px) {
+		flex-direction: column;
+	}
 `;
 const Info = styled(motion.div)`
 	text-align: center;
@@ -167,8 +177,22 @@ const Info = styled(motion.div)`
 const Platforms = styled(motion.div)`
 	display: flex;
 	justify-content: space-evenly;
+	/* flex-wrap: wrap; */
 	img {
 		margin-left: 3rem;
+	}
+	@media screen and (max-width: 992px) {
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		img {
+			margin-left: 1.5rem;
+			margin-bottom: 1rem;
+		}
+	}
+	@media screen and (max-width: 425px) {
+		img {
+			margin-left: 1rem;
+		}
 	}
 `;
 const Media = styled(motion.div)`
@@ -179,6 +203,11 @@ const Media = styled(motion.div)`
 `;
 const Description = styled(motion.div)`
 	margin: 5rem 0rem;
+`;
+const Galary = styled(motion.div)`
+	img:not(:last-child) {
+		margin-bottom: 1rem;
+	}
 `;
 
 export default GameDetail;

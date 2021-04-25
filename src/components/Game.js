@@ -17,7 +17,12 @@ const Game = ({ name, released, image, id }) => {
 		dispatch(loadDetail(id));
 	};
 	return (
-		<StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
+		<StyledGame
+			initial={{ scale: 0.5 }}
+			animate={{ scale: 1, transition: { duration: 0.5 } }}
+			layoutId={stringPathId}
+			onClick={loadDetailHandler}
+		>
 			<Link to={`/game/${id}`}>
 				<motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
 				<p>{released}</p>
