@@ -44,6 +44,10 @@ const GlobalStyles = createGlobalStyle`
   img{
     display: block;
   }
+  input{
+		font-family: 'Monrserrat', sans-serif;
+    font-weight: bold;
+  }
 `;
 
 export default GlobalStyles;
